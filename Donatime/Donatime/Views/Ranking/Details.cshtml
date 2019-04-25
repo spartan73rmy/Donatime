@@ -1,0 +1,51 @@
+﻿@model Donatime.DataLayer.Ranking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ranking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadHoras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadHoras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividad.nombreActividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividad.nombreActividad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Voluntario.imagenPerfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Voluntario.imagenPerfil)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idRanking }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

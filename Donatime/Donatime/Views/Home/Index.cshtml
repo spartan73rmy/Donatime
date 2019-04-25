@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Donatime.DataLayer.Ranking>
+
+@{
+    ViewBag.Title = "";
+
+}
+<img width="1150" height="600" src="~/Resources/Img/FondoIndex.jpg" />
+
+
+<div class="row">
+    <div class="col">
+        <div class="text-left">
+            @Html.ActionLink("Voluntarios", "Create", "Voluntario", null, htmlAttributes: new { @class = "btn btn-primary" })
+        </div>
+        <div class="text-center">
+            @Html.ActionLink("ONG´S", "Create", "ONG", null, htmlAttributes: new { @class = "btn btn-primary text-center" })
+
+        </div>
+        <div class="text-right">
+            @Html.ActionLink("Empresas", "Create", "Sponsor", null, htmlAttributes: new { @class = "btn btn-primary text-right" })
+        </div>
+    </div>
+    </div>
+
+
+
+
+<h3>Ranking</h3>
+<h5>El ranking esta conformado por personas con los mejores tiempos</h5>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Voluntario.imagenPerfil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Voluntario.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadHoras)
+        </th>
+        <th>
+            Nivel
+        </th>
+        <th>
+            Opciones
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Voluntario.imagenPerfil))
+                {
+                    <img src="@Url.Action("Preview", new {file = @Url.Content(item.Voluntario.imagenPerfil)})" class="border border-primary"
+                         style="height:90px; width:90px" />
+                }
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Voluntario.nombre)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidadHoras)
+            </td>
+            <td>
+                @if (item.cantidadHoras >= 0 && item.cantidadHoras <= 10)
+                {
+                    @:Bronce
+                }
+                else if (item.cantidadHoras < 30 && item.cantidadHoras > 10)
+                {
+                    @:Hierro
+                }
+                else if (item.cantidadHoras >= 30 && item.cantidadHoras < 50)
+                {
+                    @:Acero
+                }
+                else if (item.cantidadHoras >= 50 && item.cantidadHoras < 100)
+                {
+                    @:Oro
+                }
+                else if (item.cantidadHoras >= 100 && item.cantidadHoras < 500)
+                {
+                    @:Diamante
+                }
+
+                else if (item.cantidadHoras >= 500 && item.cantidadHoras < 1000)
+                {
+                    @:Platino
+                }
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Saber Mas", "Details", "Voluntario", new { id = item.idVoluntario }, null)
+            </td>
+        </tr>
+    }
+
+</table>

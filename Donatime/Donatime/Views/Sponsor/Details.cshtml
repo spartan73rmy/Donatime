@@ -1,0 +1,67 @@
+﻿@model Donatime.DataLayer.Sponsor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sponsor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreEmpresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreEmpresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numTelefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numTelefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rfc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rfc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividad.nombreActividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividad.nombreActividad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idSponsor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

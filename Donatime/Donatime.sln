@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Donatime", "Donatime\Donatime.csproj", "{804F906F-D014-481D-8A41-5D32A8C1C04F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{804F906F-D014-481D-8A41-5D32A8C1C04F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{804F906F-D014-481D-8A41-5D32A8C1C04F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{804F906F-D014-481D-8A41-5D32A8C1C04F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{804F906F-D014-481D-8A41-5D32A8C1C04F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8364C6B9-8D84-4B06-83BB-C09FF4B13E26}
+	EndGlobalSection
+EndGlobal

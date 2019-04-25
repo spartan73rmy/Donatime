@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Donatime.DataLayer.Actividad>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreActividad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lugar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.infoActividad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.habilidadesRequisitos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idPatrocina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ONG.nombreOng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Problematica.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sponsor.nombreEmpresa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreActividad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lugar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.infoActividad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.habilidadesRequisitos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.imagen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idPatrocina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ONG.nombreOng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Problematica.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sponsor.nombreEmpresa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idActividad }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idActividad }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idActividad })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Donatime.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Actividad">
+    <Key>
+      <PropertyRef Name="idActividad" />
+    </Key>
+    <Property Name="idActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreActividad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lugar" Type="varchar(max)" Nullable="false" />
+    <Property Name="infoActividad" Type="varchar(max)" Nullable="false" />
+    <Property Name="habilidadesRequisitos" Type="varchar(max)" Nullable="false" />
+    <Property Name="imagen" Type="varchar(max)" Nullable="false" />
+    <Property Name="fechaInicio" Type="date" Nullable="false" />
+    <Property Name="fechaFin" Type="date" Nullable="false" />
+    <Property Name="idProblema" Type="int" Nullable="false" />
+    <Property Name="idPatrocina" Type="int" Nullable="false" />
+    <Property Name="idOrganiza" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Escolaridad">
+    <Key>
+      <PropertyRef Name="idEscolaridad" />
+    </Key>
+    <Property Name="idEscolaridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreEscolaridad" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreEstado" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="idPais" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ONG">
+    <Key>
+      <PropertyRef Name="idOng" />
+    </Key>
+    <Property Name="idOng" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreOng" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="razonSocial" Type="varchar(max)" Nullable="false" />
+    <Property Name="rfc" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="domicilio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="objetivoSocial" Type="varchar(max)" Nullable="false" />
+    <Property Name="actividades" Type="varchar(max)" Nullable="false" />
+    <Property Name="apoyosVoluntarios" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="inicioOperacion" Type="date" Nullable="false" />
+    <Property Name="tiempoOperacion" Type="date" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="idPais" />
+    </Key>
+    <Property Name="idPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombrePais" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Problematica">
+    <Key>
+      <PropertyRef Name="idProblema" />
+    </Key>
+    <Property Name="idProblema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Puntos" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ranking">
+    <Key>
+      <PropertyRef Name="idRanking" />
+    </Key>
+    <Property Name="idRanking" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cantidadHoras" Type="int" Nullable="false" />
+    <Property Name="fechaRegistro" Type="date" />
+    <Property Name="idVoluntario" Type="int" Nullable="false" />
+    <Property Name="idActividad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sponsor">
+    <Key>
+      <PropertyRef Name="idSponsor" />
+    </Key>
+    <Property Name="idSponsor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreEmpresa" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="numTelefono" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" Nullable="false" />
+    <Property Name="rfc" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Voluntario">
+    <Key>
+      <PropertyRef Name="idVoluntario" />
+    </Key>
+    <Property Name="idVoluntario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imagenPerfil" Type="varchar(max)" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="municipio" Type="varchar(max)" Nullable="false" />
+    <Property Name="comunidad" Type="varchar(max)" Nullable="false" />
+    <Property Name="colonia" Type="varchar(max)" Nullable="false" />
+    <Property Name="direccion" Type="varchar(max)" Nullable="false" />
+    <Property Name="numTelOficina" Type="varchar" MaxLength="10" />
+    <Property Name="numCelular" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="idEstado" Type="int" Nullable="false" />
+    <Property Name="idEscolaridad" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Actividad_ONG">
+    <End Role="ONG" Type="Self.ONG" Multiplicity="1" />
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ONG">
+        <PropertyRef Name="idOng" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="idOrganiza" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividad_Problematica">
+    <End Role="Problematica" Type="Self.Problematica" Multiplicity="1" />
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problematica">
+        <PropertyRef Name="idProblema" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="idProblema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividad_Sponsor">
+    <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sponsor">
+        <PropertyRef Name="idSponsor" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="idPatrocina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estado_Estado">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="idPais" />
+      </Principal>
+      <Dependent Role="Estado">
+        <PropertyRef Name="idPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ranking_Voluntario">
+    <End Role="Voluntario" Type="Self.Voluntario" Multiplicity="1" />
+    <End Role="Ranking" Type="Self.Ranking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voluntario">
+        <PropertyRef Name="idVoluntario" />
+      </Principal>
+      <Dependent Role="Ranking">
+        <PropertyRef Name="idVoluntario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voluntario_Escolaridad">
+    <End Role="Escolaridad" Type="Self.Escolaridad" Multiplicity="1" />
+    <End Role="Voluntario" Type="Self.Voluntario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escolaridad">
+        <PropertyRef Name="idEscolaridad" />
+      </Principal>
+      <Dependent Role="Voluntario">
+        <PropertyRef Name="idEscolaridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voluntario_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Voluntario" Type="Self.Voluntario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="Voluntario">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DonatimeStoreContainer">
+    <EntitySet Name="Actividad" EntityType="Self.Actividad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Escolaridad" EntityType="Self.Escolaridad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ONG" EntityType="Self.ONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Problematica" EntityType="Self.Problematica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ranking" EntityType="Self.Ranking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voluntario" EntityType="Self.Voluntario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Actividad_ONG" Association="Self.FK_Actividad_ONG">
+      <End Role="ONG" EntitySet="ONG" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividad_Problematica" Association="Self.FK_Actividad_Problematica">
+      <End Role="Problematica" EntitySet="Problematica" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividad_Sponsor" Association="Self.FK_Actividad_Sponsor">
+      <End Role="Sponsor" EntitySet="Sponsor" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estado_Estado" Association="Self.FK_Estado_Estado">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Estado" EntitySet="Estado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ranking_Voluntario" Association="Self.FK_Ranking_Voluntario">
+      <End Role="Voluntario" EntitySet="Voluntario" />
+      <End Role="Ranking" EntitySet="Ranking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voluntario_Escolaridad" Association="Self.FK_Voluntario_Escolaridad">
+      <End Role="Escolaridad" EntitySet="Escolaridad" />
+      <End Role="Voluntario" EntitySet="Voluntario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voluntario_Estado" Association="Self.FK_Voluntario_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Voluntario" EntitySet="Voluntario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

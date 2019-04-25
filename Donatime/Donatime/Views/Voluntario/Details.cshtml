@@ -1,0 +1,99 @@
+﻿@model Donatime.DataLayer.Voluntario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Voluntario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imagenPerfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagenPerfil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comunidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comunidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numTelOficina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numTelOficina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numCelular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numCelular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Escolaridad.nombreEscolaridad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Escolaridad.nombreEscolaridad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.nombreEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.nombreEstado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idVoluntario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

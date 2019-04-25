@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Donatime.DataLayer.ONG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreOng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.razonSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rfc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.domicilio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.objetivoSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actividades)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apoyosVoluntarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inicioOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tiempoOperacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreOng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.razonSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rfc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.domicilio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.objetivoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actividades)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apoyosVoluntarios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inicioOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tiempoOperacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idOng }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idOng }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idOng })
+        </td>
+    </tr>
+}
+
+</table>

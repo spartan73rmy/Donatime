@@ -1,0 +1,107 @@
+﻿@model Donatime.DataLayer.Actividad
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Actividad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreActividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreActividad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lugar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.infoActividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.infoActividad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.habilidadesRequisitos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.habilidadesRequisitos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idPatrocina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idPatrocina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ONG.nombreOng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ONG.nombreOng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Problematica.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problematica.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sponsor.nombreEmpresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sponsor.nombreEmpresa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idActividad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

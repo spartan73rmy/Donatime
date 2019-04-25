@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DonatimeEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Database.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Database.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Actividad" EntityType="Database.Actividad" />
+    <EntitySet Name="Escolaridad" EntityType="Database.Escolaridad" />
+    <EntitySet Name="Estado" EntityType="Database.Estado" />
+    <EntitySet Name="ONG" EntityType="Database.ONG" />
+    <EntitySet Name="Pais" EntityType="Database.Pais" />
+    <EntitySet Name="Problematica" EntityType="Database.Problematica" />
+    <EntitySet Name="Ranking" EntityType="Database.Ranking" />
+    <EntitySet Name="Sponsor" EntityType="Database.Sponsor" />
+    <EntitySet Name="sysdiagrams" EntityType="Database.sysdiagrams" />
+    <EntitySet Name="Voluntario" EntityType="Database.Voluntario" />
+    <AssociationSet Name="FK_Actividad_ONG" Association="Database.FK_Actividad_ONG">
+      <End Role="ONG" EntitySet="ONG" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividad_Problematica" Association="Database.FK_Actividad_Problematica">
+      <End Role="Problematica" EntitySet="Problematica" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividad_Sponsor" Association="Database.FK_Actividad_Sponsor">
+      <End Role="Sponsor" EntitySet="Sponsor" />
+      <End Role="Actividad" EntitySet="Actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voluntario_Escolaridad" Association="Database.FK_Voluntario_Escolaridad">
+      <End Role="Escolaridad" EntitySet="Escolaridad" />
+      <End Role="Voluntario" EntitySet="Voluntario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estado_Estado" Association="Database.FK_Estado_Estado">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Estado" EntitySet="Estado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voluntario_Estado" Association="Database.FK_Voluntario_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Voluntario" EntitySet="Voluntario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ranking_Voluntario" Association="Database.FK_Ranking_Voluntario">
+      <End Role="Voluntario" EntitySet="Voluntario" />
+      <End Role="Ranking" EntitySet="Ranking" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Actividad">
+    <Key>
+      <PropertyRef Name="idActividad" />
+    </Key>
+    <Property Name="idActividad" Type="Int32" Nullable="false" />
+    <Property Name="nombreActividad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lugar" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="infoActividad" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="habilidadesRequisitos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idProblema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPatrocina" Type="Int32" Nullable="false" />
+    <Property Name="idOrganiza" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ONG" Relationship="Database.FK_Actividad_ONG" FromRole="Actividad" ToRole="ONG" />
+    <NavigationProperty Name="Problematica" Relationship="Database.FK_Actividad_Problematica" FromRole="Actividad" ToRole="Problematica" />
+    <NavigationProperty Name="Sponsor" Relationship="Database.FK_Actividad_Sponsor" FromRole="Actividad" ToRole="Sponsor" />
+  </EntityType>
+  <EntityType Name="Escolaridad">
+    <Key>
+      <PropertyRef Name="idEscolaridad" />
+    </Key>
+    <Property Name="idEscolaridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEscolaridad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Voluntario" Relationship="Database.FK_Voluntario_Escolaridad" FromRole="Escolaridad" ToRole="Voluntario" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEstado" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idPais" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pais" Relationship="Database.FK_Estado_Estado" FromRole="Estado" ToRole="Pais" />
+    <NavigationProperty Name="Voluntario" Relationship="Database.FK_Voluntario_Estado" FromRole="Estado" ToRole="Voluntario" />
+  </EntityType>
+  <EntityType Name="ONG">
+    <Key>
+      <PropertyRef Name="idOng" />
+    </Key>
+    <Property Name="idOng" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreOng" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="razonSocial" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="rfc" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="domicilio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="objetivoSocial" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="actividades" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="apoyosVoluntarios" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="inicioOperacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tiempoOperacion" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Actividad" Relationship="Database.FK_Actividad_ONG" FromRole="ONG" ToRole="Actividad" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="idPais" />
+    </Key>
+    <Property Name="idPais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombrePais" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Estado" Relationship="Database.FK_Estado_Estado" FromRole="Pais" ToRole="Estado" />
+  </EntityType>
+  <EntityType Name="Problematica">
+    <Key>
+      <PropertyRef Name="idProblema" />
+    </Key>
+    <Property Name="idProblema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Puntos" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Actividad" Relationship="Database.FK_Actividad_Problematica" FromRole="Problematica" ToRole="Actividad" />
+  </EntityType>
+  <EntityType Name="Ranking">
+    <Key>
+      <PropertyRef Name="idRanking" />
+    </Key>
+    <Property Name="idRanking" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idVoluntario" Type="Int32" Nullable="false" />
+    <Property Name="cantidadHoras" Type="Int32" Nullable="false" />
+    <Property Name="idActividad" Type="Int32" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Voluntario" Relationship="Database.FK_Ranking_Voluntario" FromRole="Ranking" ToRole="Voluntario" />
+  </EntityType>
+  <EntityType Name="Sponsor">
+    <Key>
+      <PropertyRef Name="idSponsor" />
+    </Key>
+    <Property Name="idSponsor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEmpresa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numTelefono" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="rfc" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Actividad" Relationship="Database.FK_Actividad_Sponsor" FromRole="Sponsor" ToRole="Actividad" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Voluntario">
+    <Key>
+      <PropertyRef Name="idVoluntario" />
+    </Key>
+    <Property Name="idVoluntario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imagenPerfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="municipio" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="comunidad" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="colonia" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="numTelOficina" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="numCelular" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <Property Name="idEscolaridad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Escolaridad" Relationship="Database.FK_Voluntario_Escolaridad" FromRole="Voluntario" ToRole="Escolaridad" />
+    <NavigationProperty Name="Estado" Relationship="Database.FK_Voluntario_Estado" FromRole="Voluntario" ToRole="Estado" />
+    <NavigationProperty Name="Ranking" Relationship="Database.FK_Ranking_Voluntario" FromRole="Voluntario" ToRole="Ranking" />
+  </EntityType>
+  <Association Name="FK_Actividad_ONG">
+    <End Type="Database.ONG" Role="ONG" Multiplicity="1" />
+    <End Type="Database.Actividad" Role="Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ONG">
+        <PropertyRef Name="idOng" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="idOrganiza" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividad_Problematica">
+    <End Type="Database.Problematica" Role="Problematica" Multiplicity="1" />
+    <End Type="Database.Actividad" Role="Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problematica">
+        <PropertyRef Name="idProblema" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="idProblema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividad_Sponsor">
+    <End Type="Database.Sponsor" Role="Sponsor" Multiplicity="1" />
+    <End Type="Database.Actividad" Role="Actividad" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sponsor">
+        <PropertyRef Name="idSponsor" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="idActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voluntario_Escolaridad">
+    <End Type="Database.Escolaridad" Role="Escolaridad" Multiplicity="1" />
+    <End Type="Database.Voluntario" Role="Voluntario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escolaridad">
+        <PropertyRef Name="idEscolaridad" />
+      </Principal>
+      <Dependent Role="Voluntario">
+        <PropertyRef Name="idEscolaridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estado_Estado">
+    <End Type="Database.Pais" Role="Pais" Multiplicity="1" />
+    <End Type="Database.Estado" Role="Estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="idPais" />
+      </Principal>
+      <Dependent Role="Estado">
+        <PropertyRef Name="idPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voluntario_Estado">
+    <End Type="Database.Estado" Role="Estado" Multiplicity="1" />
+    <End Type="Database.Voluntario" Role="Voluntario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="Voluntario">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ranking_Voluntario">
+    <End Type="Database.Voluntario" Role="Voluntario" Multiplicity="1" />
+    <End Type="Database.Ranking" Role="Ranking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voluntario">
+        <PropertyRef Name="idVoluntario" />
+      </Principal>
+      <Dependent Role="Ranking">
+        <PropertyRef Name="idVoluntario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
